@@ -27,7 +27,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/<username>")
+@app.route("/<username>", methods=["GET", "POST"])
 def user(username):
     """Display chat message"""
     if request.method == "POST":
@@ -43,7 +43,7 @@ def user(username):
 def send_message(username, message):
     """Create a new message and redirect back to the chat page"""
     add_messages(username, message)
-    return redirect("/" + username)   
+    return redirect("/" + username)    
 
 
 if __name__ == "__main__":
